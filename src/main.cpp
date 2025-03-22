@@ -372,7 +372,12 @@ void setup()
     delay(PERIPHERAL_WARMUP_MS);
 #endif
 
-#ifdef BUTTON_PIN
+#if defined(BUTTON_PIN) || defined(USERPREFS_BUTTON_PIN)
+
+#ifndef BUTTON_PIN
+#define BUTTON_PIN USERPREFS_BUTTON_PIN
+#endif
+
 #ifdef ARCH_ESP32
 
 #if ESP_ARDUINO_VERSION_MAJOR >= 3
